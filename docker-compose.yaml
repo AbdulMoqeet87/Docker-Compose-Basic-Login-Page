@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./my-app
+    container_name: react-app
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - mern-networks
+
+  backend:
+    build: ./backend
+    container_name: node-api
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - mern-networks
+
+  database:
+    image: mongo:4.4
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/abdul-moqeet/mongo-data:/data/db
+    networks:
+      - mern-networks
+
+networks:
+  mern-networks:
+    driver: bridge
