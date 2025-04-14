@@ -23,7 +23,8 @@ const LoginPage = () => {
       console.log("Sending request to backend...");
       // Send POST request to the backend API
       //const response = await axios.post('http://node-api:3000/login', {
-      const response = await axios.post('http://localhost:3000/login', {   
+      //const response = await axios.post('http://localhost:3000/login', {   
+      const response = await axios.post('http://35.171.22.26:3000/login', {   
       //const response = await axios.post('/login', {
         email,
         password,
