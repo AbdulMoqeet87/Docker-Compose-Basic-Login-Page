@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use(cors());
 const MONGO_URI= "mongodb+srv://AM22147:abdul123@cluster0.g1twvpj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 // e.connect("mongodb://mogo-db/users")
-// mongoose.connect(MONGO_URI)
-mongoose.connect("mongodb://mongo-db/test")
+mongoose.connect(MONGO_URI)
+//mongoose.connect("mongodb://mongo-db/test")
   .then(() => {
     console.log('MongoDB connected');
   })
