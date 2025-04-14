@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -11,6 +12,8 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'my-app/dist')));
+
 const MONGO_URI= "mongodb+srv://AM22147:abdul123@cluster0.g1twvpj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 // e.connect("mongodb://mogo-db/users")
 mongoose.connect(MONGO_URI)
@@ -34,6 +37,9 @@ app.get('/', (req, res) => {
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'my-app/dist', 'index.html'));
+  });
   
 
   if (!email || !password) {
